@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   header {
     display: grid;
     grid-template-columns: 1fr;
