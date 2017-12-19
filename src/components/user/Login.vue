@@ -4,7 +4,7 @@
       <ul>
         <li>
           <label>Email</label> <br>
-          <input type="email" name="" placeholder="Email">
+          <input type="email" name="" placeholder="Email" autofocus>
         </li>
         <li>
           <label>Password</label> <br>
@@ -24,16 +24,17 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
   section {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    .login-form {
+      margin: 10rem 0;
+    }
   }
 
-  .login-form {
-    margin: 10rem 0;
-  }
+
 
   .form-btn {
 

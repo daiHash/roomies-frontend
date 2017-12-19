@@ -20,30 +20,26 @@ export default {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
-  }
-
-  nav {
-    margin: 0;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    justify-content: center;
-    width: 80vw;
-  }
-
-  h2 {
-    margin: 1rem 0 0 3rem;
-    align-items: start;
-    font-size: 5rem;
-    font-family: 'miraculous&christmas';
-    font-weight: 200;
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  ul li {
-    margin-top: 2rem;
+    nav {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      justify-content: center;
+      width: 85vw;
+      h2 {
+        margin: 1rem 0 0 3rem;
+        font-size: 5rem;
+        font-family: 'miraculous&christmas';
+        font-weight: 200;
+      }
+      ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        li {
+          width: 100px;
+          margin-top: 2rem;
+        }
+      }
+    }
   }
 </style>
