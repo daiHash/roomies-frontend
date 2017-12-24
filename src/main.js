@@ -6,14 +6,16 @@ import VueAxios from 'vue-axios'
 
 import App from './App'
 import router from './router'
+import store from './store/store'
 
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
 /* eslint-disable no-new */
-new Vue({
+export default new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

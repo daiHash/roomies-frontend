@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
+  <section>
 
-  </div>
+  </section>
 </template>
 
 <script>

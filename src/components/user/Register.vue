@@ -1,25 +1,43 @@
 <template>
   <section>
-    <form class="register-form">
+    <form class="register-form" @submit.prevent="registerNewUser">
       <ul>
         <li>
           <label>Username</label> <br>
-          <input type="text" name="" placeholder="Username" autofocus>
+          <input
+            type="text"
+            placeholder="Username"
+            v-model="username"
+            autofocus
+            required/>
         </li>
         <li>
           <label>Email</label> <br>
-          <input type="email" name="" placeholder="Email">
+          <input
+            type="email"
+            placeholder="Email"
+            pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,3}"
+            v-model="email"
+            required/>
         </li>
         <li>
           <label>Password</label> <br>
-          <input type="password" name="" placeholder="Password">
+          <input
+            type="password"
+            placeholder="Password"
+            v-model="password"
+            required/>
         </li>
         <li>
           <label>Password Confirmation</label> <br>
-          <input type="password" name="" placeholder="Password Confirmation">
+          <input
+            type="password"
+            placeholder="Password Confirmation"
+            v-model="passwordConfirmation"
+            required/>
         </li>
         <li class="btn-container">
-          <input class="form-btn" type="button" value="新規登録">
+          <input class="form-btn" type="submit" value="新規登録">
         </li>
       </ul>
     </form>
@@ -27,7 +45,43 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import Storage from '../../utils/storage'
+
 export default {
+  data () {
+    return {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    }
+  },
+  created: function () {
+    if (Storage.userIsLoggedIn()) {
+      this.$router.push({name: 'Home'})
+    }
+  },
+  methods: {
+    ...mapActions({
+      register: 'userRegister'
+    }),
+    registerNewUser () {
+      const userData = {
+        'name': this.username,
+        'email': this.email,
+        'password': this.password
+      }
+      this.axios.post('http://localhost:3000/v1/register', userData)
+      .then(response => {
+        this.register(response.data.access_token)
+        this.$router.go({name: 'Home'})
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
+  }
 }
 </script>
 
@@ -63,25 +117,23 @@ export default {
         .btn-container {
           text-align: center;
           .form-btn {
+            font-size: 1.5rem;
             width: 21rem;
             height: 3rem;
             border-radius: 25px;
+            cursor: pointer;
+            transition: all .2s;
           }
-          .form-btn[type=button]:focus {
+          .form-btn:hover {
+            background-color: #2BF2C7;
+            color: #fff;
+            border: none
+          }
+          .form-btn[type=submit]:focus {
             outline: 0;
           }
         }
       }
     }
   }
-
-
-
-
-
-
-
-
-
-
 </style>

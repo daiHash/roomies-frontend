@@ -3,15 +3,33 @@
     <nav>
       <h2>Roomies</h2>
       <ul>
-        <li><router-link :to="{ name: 'Login'}">Login</router-link></li>
-        <li><router-link :to="{ name: 'Register' }">Signup</router-link></li>
+        <div v-if="!isLoggedIn">
+          <li><router-link :to="{ name: 'Login'}">Login</router-link></li>
+          <li><router-link :to="{ name: 'Register' }">Signup</router-link></li>
+        </div>
+        <div v-else>
+          <li><a href="#" @click="logout">Logout</a></li>
+        </div>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import Storage from '../../utils/storage'
+
 export default {
+  data () {
+    return {
+      isLoggedIn: Storage.userIsLoggedIn()
+    }
+  },
+  methods: {
+    logout () {
+      Storage.removeUserCredentials()
+      this.$router.go({name: 'Home'})
+    }
+  }
 }
 </script>
 
@@ -33,11 +51,13 @@ export default {
         font-weight: 200;
       }
       ul {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        li {
-          width: 100px;
-          margin-top: 2rem;
+        div {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          li {
+            width: 100px;
+            margin-top: 2rem;
+          }
         }
       }
     }

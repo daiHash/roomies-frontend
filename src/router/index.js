@@ -25,6 +25,15 @@ export default new Router({
         footer: Footer
       }
     },
+    // {
+    //   path: '*',
+    //   name: 'Home',
+    //   components: {
+    //     default: Home,
+    //     footer: Footer,
+    //     header: Header
+    //   }
+    // },
     {
       path: '/register',
       name: 'Register',
