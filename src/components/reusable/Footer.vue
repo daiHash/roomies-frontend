@@ -11,11 +11,12 @@ export default {
 
 <style lang="scss" scoped>
   footer {
+    bottom: 0;
     border-top: 1px solid rgba(204, 204, 204, 0.75);
     /* min-height: 10vh; */
     text-align: center;
     h3 {
-      margin-top: 5rem;
+      margin: 4rem 0;
     }
   }
 </style>

@@ -10,6 +10,9 @@
             v-model="username"
             autofocus
             required/>
+            <div class="requirements">
+
+            </div>
         </li>
         <li>
           <label>Email</label> <br>
@@ -19,22 +22,34 @@
             pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,3}"
             v-model="email"
             required/>
+            <div class="requirements">
+              有効なメールアドレスでなければなりません <br>
+              例： myemail@email.com
+            </div>
         </li>
         <li>
           <label>Password</label> <br>
           <input
             type="password"
             placeholder="Password"
+            pattern=".{8,}"
             v-model="password"
             required/>
+            <div class="requirements">
+              8文字以上のパスワードを入力して下さい
+            </div>
         </li>
         <li>
           <label>Password Confirmation</label> <br>
           <input
             type="password"
             placeholder="Password Confirmation"
+            :pattern="password"
             v-model="passwordConfirmation"
             required/>
+            <div class="requirements">
+              パスワードが一致しません
+            </div>
         </li>
         <li class="btn-container">
           <input class="form-btn" type="submit" value="新規登録">
@@ -98,9 +113,12 @@ export default {
         grid-template-columns: 1fr;
         padding: 0;
         li {
-          padding-left: 3rem;
-          margin: 1.5rem 0;
-          input {
+          padding-left: 5rem;
+          margin: 1rem 0;
+          // Input Validation Handling Styles
+          > input[type="text"],
+          > input[type="email"],
+          > input[type="password"] {
             width: 20rem;
             height: 2.5rem;
             padding-left: .7rem;
@@ -108,6 +126,17 @@ export default {
             border: 1px solid #ccc;
             border-radius: 3px;
             background-color: #fff;
+            &:invalid:not(:focus):not(:placeholder-shown) {
+              background-color: #FEC0CB;
+              border: solid 1px #FEC0CB;
+            }
+
+            &:invalid:focus:not(:placeholder-shown) {
+              & ~ .requirements {
+                max-height: 200px;
+                padding: 30px 0 15px 0;
+              }
+            }
           }
           input::placeholder {
             font-size: 1rem;
@@ -115,7 +144,6 @@ export default {
           }
         }
         .btn-container {
-          text-align: center;
           .form-btn {
             font-size: 1.5rem;
             width: 21rem;
@@ -125,7 +153,7 @@ export default {
             transition: all .2s;
           }
           .form-btn:hover {
-            background-color: #2BF2C7;
+            background-color: #FD6C5C;
             color: #fff;
             border: none
           }
@@ -136,4 +164,16 @@ export default {
       }
     }
   }
+
+  // Requirements Message Styles
+  .requirements {
+      padding: 0 30px 0 50px;
+      color: #999;
+      max-height: 0;
+      transition: 0.28s;
+      overflow: hidden;
+      color: red;
+      font-style: italic;
+      font-size: 1rem;
+    }
 </style>

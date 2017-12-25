@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // Home component
-import Home from '@/components/Home'
+import Home from '@/components/home/Home'
 
 // Reusable Global components
 import Header from '@/components/reusable/Header'

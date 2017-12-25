@@ -67,6 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   section {
     display: grid;
     grid-template-columns: 1fr;
@@ -106,7 +107,7 @@ export default {
             transition: all .2s;
           }
           .form-btn:hover {
-            background-color: #2BF2C7;
+            background-color: #FD6C5C;
             color: #fff;
             border: none
           }
