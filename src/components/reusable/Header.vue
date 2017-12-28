@@ -6,7 +6,13 @@
       </router-link>
       <ul>
         <div v-if="!isLoggedIn">
-          <li><a href="#about">Roomiesとは？</a></li>
+          <li>
+            <a href="#about"
+              v-smooth-scroll
+              @click="toHome">
+              Roomiesとは？
+            </a>
+          </li>
           <li><router-link :to="{ name: 'Login'}">ログイン</router-link></li>
           <li><router-link :to="{ name: 'Register' }">新規登録</router-link></li>
         </div>
@@ -31,6 +37,12 @@ export default {
     logout () {
       Storage.removeUserCredentials()
       this.$router.go({name: 'Home'})
+    },
+    toHome () {
+      const path = this.$route.path
+      if (path !== '/') {
+        this.$router.push({ name: 'Home' })
+      }
     }
   }
 }

@@ -7,8 +7,11 @@ import VueAxios from 'vue-axios'
 import App from './App'
 import router from './router'
 import store from './store/store'
+import vueSmoothScroll from 'vue-smooth-scroll'
 
 Vue.config.productionTip = false
+
+Vue.use(vueSmoothScroll)
 
 Vue.use(VueAxios, axios)
 /* eslint-disable no-new */
