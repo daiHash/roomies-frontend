@@ -32,11 +32,13 @@
           <input
             type="password"
             placeholder="Password"
-            pattern=".{8,}"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             v-model="password"
             required/>
             <div class="requirements">
-              8文字以上のパスワードを入力して下さい
+              8文字以上で1文字以上の数字、小文字アルファベット、<br>
+              大文字アルファベットがそれぞれ含まれている <br>
+              パスワードを入力してください
             </div>
         </li>
         <li>
@@ -104,7 +106,7 @@ export default {
   section {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+    place-items: center;
     .register-form {
       margin: 5rem 0;
       font-size: 1.3rem;

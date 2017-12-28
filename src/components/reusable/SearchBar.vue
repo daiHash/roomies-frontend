@@ -12,9 +12,11 @@ export default {
 
 <style lang="scss" scoped>
   .searchbar-container {
-    position: absolute;
-    top: 500px;
-    left: 470px;
+    grid-column: 2 / span 6;
+    grid-row: 4;
+    align-self: start;
+    text-align: center;
+    margin-top: 1rem;
     .search-bar {
       width: 25rem;
       height: 2.5rem;

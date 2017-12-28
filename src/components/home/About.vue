@@ -33,10 +33,12 @@ export default {
   .about {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 5rem;
-    justify-items: center;
-    width: 85vw;
+    grid-template-rows: repeat(3, 1fr);
+    // grid-gap: 2rem;
+    grid-row-gap: 8rem;
+    place-items: center;
     padding: 8rem 0;
+    width: 85vw;
     margin: 0 auto;
     .step1, .step2, .step3 {
       display: grid;
@@ -47,8 +49,8 @@ export default {
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
       }
     }
-    .step2 .content {
-      max-width: 35vw;
+    .step2 img {
+      margin-left: 62px;
     }
   }
 </style>

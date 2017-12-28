@@ -6,7 +6,7 @@
       <p>ROOMIESで簡単に住みたい場所から検索</p>
       <app-search-bar></app-search-bar>
     </div>
-    <app-about-section id="about"></app-about-section>
+    <app-about-section></app-about-section>
   </div>
 </template>
 
@@ -29,24 +29,28 @@
     background-position: center;
     background-size: cover;
     min-height: 90vh;
-    min-width: 100vw;
-    position: relative;
+    min-width: 30vw;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     h2 {
-      position: absolute;
-      text-align: center;
+      grid-column: 2 / span 6;
+      grid-row: 3;
       color: #fff;
-      top: 310px;
-      width: 100%;
+      margin: 1rem 0 0 0;
+      text-align: center;
+      // align-self: start;
       font-size: 3rem;
       font-weight: 300;
     }
     p {
-      position: absolute;
+      grid-column: 2 / span 6;
+      grid-row: 3;
+      align-self: end;
       text-align: center;
       color: #fff;
-      top: 400px;
+      margin: 0;
       font-size: 1.8rem;
-      width: 100%;
     }
   }
 </style>
