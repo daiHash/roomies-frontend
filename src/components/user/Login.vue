@@ -53,7 +53,7 @@ export default {
         'email': this.email,
         'password': this.password
       }
-      this.axios.post('http://localhost:3000/v1/login', userData)
+      this.axios.post('login', userData)
       .then(response => {
         this.login(response.data.access_token)
         this.$router.go({name: 'Home'})

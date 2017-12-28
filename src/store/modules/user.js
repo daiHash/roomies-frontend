@@ -1,5 +1,6 @@
 import * as types from '../mutation-types'
 import Storage from '../../utils/storage'
+import Vue from '../../main'
 
 // User states
 const state = {
@@ -11,11 +12,16 @@ const mutations = {
   [types.USER_LOG_IN] (state, status) {
     Storage.isUserLoggedIn(status)
   },
+  [types.USER_LOG_OUT] () {
+    Storage.removeUserCredentials()
+    delete Vue.axios.defaults.headers.common['Authorization']
+  },
   [types.USER_REGISTER] (state, status) {
     Storage.isUserLoggedIn(status)
   },
   [types.AUTHORIZE_USER] (state, payload) {
     Storage.setAccessToken(payload)
+    Vue.axios.defaults.headers.common['Authorization'] = `Bearer ${Storage.getAccessToken()}`
   }
 }
 
@@ -24,6 +30,9 @@ const actions = {
   userLogin ({commit}, userCredentials) {
     commit(types.USER_LOG_IN, true)
     commit(types.AUTHORIZE_USER, userCredentials)
+  },
+  userLogout ({commit}) {
+    commit(types.USER_LOG_OUT)
   },
   userRegister ({commit}, userCredentials) {
     commit(types.USER_REGISTER, true)

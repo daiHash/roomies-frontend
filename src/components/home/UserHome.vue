@@ -1,11 +1,16 @@
 <template>
   <div class="main-img">
-
+    <app-profile></app-profile>
   </div>
 </template>
 
 <script>
+import Profile from '../user/Profile.vue'
+
 export default {
+  components: {
+    appProfile: Profile
+  }
 }
 </script>
 

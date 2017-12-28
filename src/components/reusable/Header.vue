@@ -17,7 +17,7 @@
           <li><router-link :to="{ name: 'Register' }">新規登録</router-link></li>
         </div>
         <div v-else>
-          <li><a href="#" @click="logout">Logout</a></li>
+          <li><a href="#" @click="userLogout">Logout</a></li>
         </div>
       </ul>
     </nav>
@@ -26,6 +26,7 @@
 
 <script>
 import Storage from '../../utils/storage'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -34,8 +35,11 @@ export default {
     }
   },
   methods: {
-    logout () {
-      Storage.removeUserCredentials()
+    ...mapActions({
+      logout: 'userLogout'
+    }),
+    userLogout () {
+      this.logout()
       this.$router.go({name: 'Home'})
     },
     toHome () {

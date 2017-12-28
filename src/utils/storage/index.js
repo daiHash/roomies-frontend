@@ -9,7 +9,11 @@ export default class UserCredentialsStorage {
   }
 
   static getAccessToken () {
-    window.localStorage.getItem('access_token')
+    var accessToken = window.localStorage.getItem('access_token')
+    if (accessToken === null) {
+      return null
+    }
+    return accessToken
   }
 
   static isUserLoggedIn (status) {
