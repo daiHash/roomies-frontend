@@ -3,8 +3,13 @@ export default class UserCredentialsStorage {
     window.localStorage.setItem('access_token', token)
   }
 
+  static setRefreshToken (token) {
+    window.localStorage.setItem('refresh_token', token)
+  }
+
   static removeUserCredentials () {
     window.localStorage.removeItem('access_token')
+    window.localStorage.removeItem('refresh_token')
     window.localStorage.removeItem('isLoggedIn')
   }
 
@@ -22,5 +27,19 @@ export default class UserCredentialsStorage {
 
   static userIsLoggedIn () {
     return JSON.parse(window.localStorage.getItem('isLoggedIn'))
+  }
+
+  static getUserId (token) {
+    if (token === null) return null
+
+    const encode = token.split('.')[1]
+    if (encode === undefined) return null
+
+    const decode = window.atob(encode)
+    const json = JSON.parse(decode)
+    const userid = json.sub
+    if (userid === undefined) return null
+
+    return userid
   }
 }

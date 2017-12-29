@@ -23,6 +23,8 @@
 </script>
 
 <style lang="scss" scoped>
+  $main-img-font-color: #fff;
+
   .main-img {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url('../../assets/rm3.jpg');
@@ -36,10 +38,9 @@
     h2 {
       grid-column: 2 / span 6;
       grid-row: 3;
-      color: #fff;
+      color: $main-img-font-color;
       margin: 1rem 0 0 0;
       text-align: center;
-      // align-self: start;
       font-size: 3rem;
       font-weight: 300;
     }
@@ -48,7 +49,7 @@
       grid-row: 3;
       align-self: end;
       text-align: center;
-      color: #fff;
+      color: $main-img-font-color;
       margin: 0;
       font-size: 1.8rem;
     }

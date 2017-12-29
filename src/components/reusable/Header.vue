@@ -53,8 +53,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $bg-color: #48C2AC;
+  $header-font-color: #fff;
+
   header {
-    background-color: #48C2AC;
+    background-color: $bg-color;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
@@ -69,7 +72,7 @@ export default {
         font-size: 4rem;
         font-family: 'miraculous&christmas';
         font-weight: 200;
-        color: #fff;
+        color: $header-font-color;
       }
       ul {
         div {
@@ -81,7 +84,7 @@ export default {
             margin-top: 1.5rem;
             a {
               font-size: .6rem;
-              color: #fff;
+              color: $header-font-color;
             }
             a:first-of-type {
               font-size: 1rem;

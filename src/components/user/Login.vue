@@ -55,7 +55,7 @@ export default {
       }
       this.axios.post('login', userData)
       .then(response => {
-        this.login(response.data.access_token)
+        this.login(response.data)
         this.$router.go({name: 'Home'})
       })
       .catch(error => {
@@ -69,6 +69,11 @@ export default {
 <style lang="scss" scoped>
 
   section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+      url('../../assets/rm2.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;

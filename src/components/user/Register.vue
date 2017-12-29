@@ -81,17 +81,33 @@ export default {
   },
   methods: {
     ...mapActions({
-      register: 'userRegister'
+      register: 'userRegister',
+      login: 'userLogin'
     }),
     registerNewUser () {
-      const userData = {
+      const registerData = {
         'name': this.username,
         'email': this.email,
         'password': this.password
       }
-      this.axios.post('register', userData)
+
+      this.axios.post('register', registerData)
       .then(response => {
-        this.register(response.data.access_token)
+        console.log(response.data.message)
+        this.userLogin()
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
+    userLogin () {
+      const loginData = {
+        'email': this.email,
+        'password': this.password
+      }
+      this.axios.post('login', loginData)
+      .then(response => {
+        this.login(response.data)
         this.$router.go({name: 'Home'})
       })
       .catch(error => {
@@ -104,6 +120,11 @@ export default {
 
 <style lang="scss" scoped>
   section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
+      url('../../assets/rm10.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;

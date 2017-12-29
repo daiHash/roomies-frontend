@@ -5,11 +5,32 @@
 </template>
 
 <script>
-import Profile from '../user/Profile.vue'
+import Profile from '../profile/Profile.vue'
+// import Storage from '../../utils/storage/index'
 
 export default {
   components: {
     appProfile: Profile
+  },
+  created: function () {
+    // this.getProfile()
+  },
+  methods: {
+    getProfile () {
+      // const userId = Storage.getUserId(Storage.getAccessToken())
+
+      this.axios.get(`profiles/20`)
+      .then(response => {
+        if (response.data.length === 0) {
+          console.log('Create a profile to get started')
+        } else {
+          console.log(response.data)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
   }
 }
 </script>

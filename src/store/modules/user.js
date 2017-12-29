@@ -20,7 +20,8 @@ const mutations = {
     Storage.isUserLoggedIn(status)
   },
   [types.AUTHORIZE_USER] (state, payload) {
-    Storage.setAccessToken(payload)
+    Storage.setAccessToken(payload.access_token)
+    Storage.setRefreshToken(payload.refresh_token)
     Vue.axios.defaults.headers.common['Authorization'] = `Bearer ${Storage.getAccessToken()}`
   }
 }
@@ -34,9 +35,8 @@ const actions = {
   userLogout ({commit}) {
     commit(types.USER_LOG_OUT)
   },
-  userRegister ({commit}, userCredentials) {
+  userRegister ({commit}) {
     commit(types.USER_REGISTER, true)
-    commit(types.AUTHORIZE_USER, userCredentials)
   }
 }
 
