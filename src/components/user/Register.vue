@@ -36,7 +36,7 @@
             v-model="password"
             required/>
             <div class="requirements">
-              8文字以上で1文字以上の数字、小文字アルファベット、<br>
+              8文字以上で1文字以上の数字、<br> 小文字アルファベット、<br>
               大文字アルファベットがそれぞれ含まれている <br>
               パスワードを入力してください
             </div>
@@ -173,14 +173,14 @@ export default {
             height: 3rem;
             border-radius: 25px;
             cursor: pointer;
-            transition: all .2s;
-          }
-          .form-btn:hover {
             background-color: #FD6C5C;
             color: #fff;
-            border: none
+            border: none;
+            transition: all .2s;
           }
+          .form-btn[type=submit]:hover,
           .form-btn[type=submit]:focus {
+            background-color: #ee5a4a;
             outline: 0;
           }
         }

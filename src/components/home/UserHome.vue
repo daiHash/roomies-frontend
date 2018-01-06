@@ -1,7 +1,13 @@
 <template>
-  <div class="main-img">
-    <app-profile></app-profile>
+  <div>
+    <div class="main-img">
+      <!-- <app-profile></app-profile> -->
+    </div>
+
+    <router-link :to="{ name: 'CreateProfile'}">Create</router-link>
   </div>
+
+
 </template>
 
 <script>

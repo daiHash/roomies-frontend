@@ -109,14 +109,14 @@ export default {
             height: 3rem;
             border-radius: 25px;
             cursor: pointer;
-            transition: all .2s;
-          }
-          .form-btn:hover {
             background-color: #FD6C5C;
             color: #fff;
-            border: none
+            border: none;
+            transition: all .3s;
           }
+          .form-btn[type=submit]:hover,
           .form-btn[type=submit]:focus {
+            background-color: #ee5a4a;
             outline: 0;
           }
         }

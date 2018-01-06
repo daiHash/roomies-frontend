@@ -11,6 +11,9 @@ import Footer from '@/components/reusable/Footer'
 import Register from '@/components/user/Register'
 import Login from '@/components/user/Login'
 
+// Profile components
+import CreateProfile from '@/components/profile/CreateProfile'
+
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +37,7 @@ export default new Router({
     //     header: Header
     //   }
     // },
+    // User components
     {
       path: '/register',
       name: 'Register',
@@ -48,6 +52,16 @@ export default new Router({
       name: 'Login',
       components: {
         default: Login,
+        header: Header,
+        footer: Footer
+      }
+    },
+    // Profile components
+    {
+      path: '/profile/create',
+      name: 'CreateProfile',
+      components: {
+        default: CreateProfile,
         header: Header,
         footer: Footer
       }

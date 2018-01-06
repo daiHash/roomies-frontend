@@ -9,6 +9,7 @@ import router from './router'
 import store from './store/store'
 import Storage from './utils/storage/index'
 import vueSmoothScroll from 'vue-smooth-scroll'
+// import vueSelect from 'vue-select'
 
 Vue.config.productionTip = false
 
@@ -16,7 +17,7 @@ Vue.use(vueSmoothScroll)
 
 let networkClient = axios.create({
   baseURL: 'http://localhost:3000/v1/',
-  timeout: 10000
+  timeout: 100000
 })
 if (Storage.getAccessToken() !== null) {
   networkClient.defaults.headers.common['Authorization'] = `Bearer ${Storage.getAccessToken()}`
