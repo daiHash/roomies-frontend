@@ -1,42 +1,27 @@
 <template>
   <div>
     <div class="main-img">
-      <!-- <app-profile></app-profile> -->
     </div>
 
     <router-link :to="{ name: 'CreateProfile'}">Create</router-link>
+    <router-link :to="{ name: 'UserProfile', params: {id: userId} }">Profile</router-link>
   </div>
-
-
 </template>
 
 <script>
-import Profile from '../profile/Profile.vue'
 import Storage from '../../utils/storage/index'
 
 export default {
+  data () {
+    return {
+      userId: Storage.userId(Storage.getAccessToken())
+    }
+  },
   components: {
-    appProfile: Profile
   },
   created: function () {
-    this.getProfile()
   },
   methods: {
-    getProfile () {
-      const userId = Storage.userId(Storage.getAccessToken())
-
-      this.axios.get(`profiles/${userId}`)
-      .then(response => {
-        if (response.data.length === 0) {
-          console.log('Create a profile to get started')
-        } else {
-          console.table(response.data)
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    }
   }
 }
 </script>
