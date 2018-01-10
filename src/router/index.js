@@ -13,6 +13,7 @@ import Login from '@/components/user/Login'
 
 // Profile components
 import CreateProfile from '@/components/profile/CreateProfile'
+import EditProfile from '@/components/profile/EditProfile'
 import UserProfile from '@/components/profile/Profile'
 
 Vue.use(Router)
@@ -72,6 +73,15 @@ export default new Router({
       name: 'UserProfile',
       components: {
         default: UserProfile,
+        header: Header,
+        footer: Footer
+      }
+    },
+    {
+      path: '/profile/:id/edit',
+      name: 'EditProfile',
+      components: {
+        default: EditProfile,
         header: Header,
         footer: Footer
       }
