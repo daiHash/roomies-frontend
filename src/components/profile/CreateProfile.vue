@@ -1,5 +1,9 @@
 <template>
   <section>
+    <div class="profile-img">
+      <img src="../../assets/rm9.jpg" width="300px" height="300px" alt="">
+    </div>
+
     <div class="personal-info">
       <form class="" @submit.prevent="createProfile">
         <app-username-selector />
@@ -85,6 +89,18 @@
   section {
     padding: 5rem 0 5rem 0;
     background-color: #FAFAFA;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    align-self: center;
+    .profile-img {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      text-align: center;
+      min-height: 350px;
+      min-width: 65vw;
+      margin: 0 auto 3rem auto;
+    }
     .personal-info {
       form {
         display: grid;
@@ -94,7 +110,7 @@
         border-radius: 3px;
         margin: 0 auto;
         padding: 5rem 0;
-        max-width: 70vw;
+        max-width: 65vw;
         background-color: #fff;
         .description {
           align-self: end;
@@ -120,10 +136,10 @@
             border-radius: 3px;
             background-color: #fff;
             resize: vertical;
-          }
-          textarea:focus {
-            outline: 0;
-            border: 2px solid #48C2AC;
+            &:focus {
+              outline: 0;
+              border: 2px solid #48C2AC;
+            }
           }
         }
         input[type="submit"] {

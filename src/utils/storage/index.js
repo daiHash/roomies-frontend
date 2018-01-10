@@ -37,9 +37,13 @@ export default class UserCredentialsStorage {
 
     const decode = window.atob(encode)
     const json = JSON.parse(decode)
-    const userid = json.sub
+    const userid = json.user_id
     if (userid === undefined) return null
 
     return userid
+  }
+
+  static userId (token) {
+    return this.getUserId(token)
   }
 }

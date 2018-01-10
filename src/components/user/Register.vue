@@ -3,7 +3,7 @@
     <form class="register-form" @submit.prevent="registerNewUser">
       <ul>
         <li>
-          <label>Username</label> <br>
+          <label>Username</label> <span class="required-sign">*</span> <br>
           <input
             type="text"
             placeholder="Username"
@@ -15,7 +15,7 @@
             </div>
         </li>
         <li>
-          <label>Email</label> <br>
+          <label>Email</label> <span class="required-sign">*</span> <br>
           <input
             type="email"
             placeholder="Email"
@@ -28,7 +28,7 @@
             </div>
         </li>
         <li>
-          <label>Password</label> <br>
+          <label>Password</label> <span class="required-sign">*</span> <br>
           <input
             type="password"
             placeholder="Password"
@@ -42,7 +42,7 @@
             </div>
         </li>
         <li>
-          <label>Password Confirmation</label> <br>
+          <label>Password Confirmation</label> <span class="required-sign">*</span> <br>
           <input
             type="password"
             placeholder="Password Confirmation"
@@ -119,16 +119,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $redColor: #FD6C5C;
+
   section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
-      url('../../assets/rm10.jpg');
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
+    background-color: #FAFAFA;
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
     .register-form {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
       margin: 5rem 0;
       font-size: 1.3rem;
       ul {
@@ -146,9 +147,17 @@ export default {
             height: 2.5rem;
             padding-left: .7rem;
             font-size: 1rem;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             border-radius: 3px;
             background-color: #fff;
+            &:focus {
+              outline: 0;
+              border: 2px solid #48C2AC;
+            }
+            &::placeholder {
+              font-size: 1rem;
+              text-indent: .3rem;
+            }
             &:invalid:not(:focus):not(:placeholder-shown) {
               background-color: #FEC0CB;
               border: solid 1px #FEC0CB;
@@ -161,10 +170,6 @@ export default {
               }
             }
           }
-          input::placeholder {
-            font-size: 1rem;
-            text-indent: .3rem;
-          }
         }
         .btn-container {
           .form-btn {
@@ -173,10 +178,10 @@ export default {
             height: 3rem;
             border-radius: 25px;
             cursor: pointer;
-            background-color: #FD6C5C;
+            background-color: $redColor;
             color: #fff;
             border: none;
-            transition: all .2s;
+            transition: all .3s;
           }
           .form-btn[type=submit]:hover,
           .form-btn[type=submit]:focus {
@@ -188,6 +193,10 @@ export default {
     }
   }
 
+  .required-sign {
+    color: $redColor;
+  }
+
   // Requirements Message Styles
   .requirements {
       padding: 0 30px 0 50px;
@@ -195,7 +204,7 @@ export default {
       max-height: 0;
       transition: 0.28s;
       overflow: hidden;
-      color: red;
+      color: $redColor;
       font-style: italic;
       font-size: 1rem;
     }

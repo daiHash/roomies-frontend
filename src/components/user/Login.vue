@@ -67,17 +67,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $redColor: #FD6C5C;
 
   section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
-      url('../../assets/rm2.jpg');
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
+    background-color: #FAFAFA;
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+    place-items: center;
     .login-form {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
       margin: 5rem 0;
       font-size: 1.3rem;
       ul {
@@ -85,21 +85,26 @@ export default {
         grid-template-columns: 1fr;
         padding: 0;
         li {
-          padding-left: 3rem;
+          padding: 0 5rem;
           margin: 1.5rem 0;
           input {
             width: 20rem;
             height: 2.5rem;
             padding-left: .7rem;
             font-size: 1rem;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             border-radius: 3px;
             background-color: #fff;
+            &:focus {
+              outline: 0;
+              border: 2px solid #48C2AC;
+            }
+            &::placeholder {
+              font-size: 1rem;
+              text-indent: .3rem;
+            }
           }
-          input::placeholder {
-            font-size: 1rem;
-            text-indent: .3rem;
-          }
+
         }
         .btn-container {
           text-align: center;
@@ -109,7 +114,7 @@ export default {
             height: 3rem;
             border-radius: 25px;
             cursor: pointer;
-            background-color: #FD6C5C;
+            background-color: $redColor;
             color: #fff;
             border: none;
             transition: all .3s;

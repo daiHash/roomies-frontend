@@ -280,7 +280,6 @@
       }),
       sendUserCountry () {
         const country = this.country
-        console.log(country)
         this.setUserCountry(country)
       }
     }
@@ -297,10 +296,10 @@
       border: 2px solid #ccc;
       border-radius: 3px;
       background-color: #fff;
-    }
-    select:focus {
-      outline: 0;
-      border: 2px solid #48C2AC;
+      &:focus {
+        outline: 0;
+        border: 2px solid #48C2AC;
+      }
     }
   }
 </style>

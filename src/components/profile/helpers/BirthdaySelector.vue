@@ -70,10 +70,10 @@
           border: 2px solid #ccc;
           border-radius: 3px;
           background-color: #fff;
-        }
-        input:focus {
-          outline: 0;
-          border: 2px solid #48C2AC;
+          &:focus {
+            outline: 0;
+            border: 2px solid #48C2AC;
+          }
         }
       }
     }

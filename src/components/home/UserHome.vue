@@ -12,25 +12,25 @@
 
 <script>
 import Profile from '../profile/Profile.vue'
-// import Storage from '../../utils/storage/index'
+import Storage from '../../utils/storage/index'
 
 export default {
   components: {
     appProfile: Profile
   },
   created: function () {
-    // this.getProfile()
+    this.getProfile()
   },
   methods: {
     getProfile () {
-      // const userId = Storage.getUserId(Storage.getAccessToken())
+      const userId = Storage.userId(Storage.getAccessToken())
 
-      this.axios.get(`profiles/20`)
+      this.axios.get(`profiles/${userId}`)
       .then(response => {
         if (response.data.length === 0) {
           console.log('Create a profile to get started')
         } else {
-          console.log(response.data)
+          console.table(response.data)
         }
       })
       .catch(error => {
