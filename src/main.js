@@ -17,7 +17,7 @@ Vue.use(vueSmoothScroll)
 
 let networkClient = axios.create({
   baseURL: 'http://localhost:3000/v1/',
-  timeout: 100000
+  timeout: 10000
 })
 if (Storage.getAccessToken() !== null) {
   networkClient.defaults.headers.common['Authorization'] = `Bearer ${Storage.getAccessToken()}`
