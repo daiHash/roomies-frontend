@@ -1,5 +1,6 @@
 <template>
   <div class="countries">
+    {{ setDefaultValue() }}
     <select name="country" id="country" @change="sendUserCountry" v-model="country">
       <option value="" label="Select a country … " selected="selected">Select a country …       </option>
       <optgroup id="country-optgroup-Africa" label="Africa">
@@ -266,13 +267,18 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
         country: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        userProfileData: 'userProfileData'
+      })
     },
     methods: {
       ...mapActions({
@@ -281,6 +287,13 @@
       sendUserCountry () {
         const country = this.country
         this.setUserCountry(country)
+      },
+      setDefaultValue () {
+        if (this.userProfileData) {
+          this.country = this.userProfileData.nationality
+        } else {
+          this.country = ''
+        }
       }
     }
   }

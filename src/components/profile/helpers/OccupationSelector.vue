@@ -1,5 +1,6 @@
 <template>
   <div class="occupation">
+    {{ setDefaultValue() }}
     <ul>
       <h3>Occupation</h3>
       <li>
@@ -9,7 +10,8 @@
           name="occupation"
           value="1"
           v-model="occupation"
-          @change="sendUserOccupation"/>
+          @change="sendUserOccupation"
+          :checked="userProfileData.occupation === '勉強'"/>
         <label for="study">勉強</label>
       </li>
       <li>
@@ -19,7 +21,8 @@
           name="occupation"
           value="2"
           v-model="occupation"
-          @change="sendUserOccupation"/>
+          @change="sendUserOccupation"
+          :checked="userProfileData.occupation === '仕事'"/>
         <label for="work">仕事</label>
       </li>
       <li>
@@ -29,7 +32,8 @@
           name="occupation"
           value="3"
           v-model="occupation"
-          @change="sendUserOccupation"/>
+          @change="sendUserOccupation"
+          :checked="userProfileData.occupation === '両方'"/>
         <label for="both">両方</label>
       </li>
     </ul>
@@ -37,13 +41,18 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
         occupation: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        userProfileData: 'userProfileData'
+      })
     },
     methods: {
       ...mapActions({
@@ -59,6 +68,19 @@
         } else {
           const occupation = '両方'
           this.setOccupation(occupation)
+        }
+      },
+      setDefaultValue () {
+        if (this.userProfileData) {
+          if (this.userProfileData.occupation === '勉強') {
+            this.occupation = '1'
+          } else if (this.userProfileData.occupation === '仕事') {
+            this.occupation = '2'
+          } else if (this.userProfileData.occupation === '両方') {
+            this.occupation = '3'
+          } else {
+            this.occupation = ''
+          }
         }
       }
     }

@@ -3,7 +3,7 @@
     <div class="profile-img">
       <img src="../../assets/rm9.jpg" width="300px" height="300px" alt="">
       <h3>{{ profile.first_name }} {{ profile.last_name }}</h3> <p>{{ age }}</p>
-
+      <icon name="odnoklassniki"></icon>
     </div>
     <div class="personal-info">
       <div class="profile-description">
@@ -92,6 +92,7 @@
       .profile-description {
         grid-column: 2 / span 10;
         grid-row: 2;
+        margin-top: 3rem;
       }
       .nationality {
         grid-column: 2 / span 3;

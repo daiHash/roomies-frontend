@@ -1,5 +1,6 @@
 <template>
   <section>
+    <!-- {{ setDefaultValue() }} -->
     <div class="profile-img">
       <img src="../../assets/rm9.jpg" width="300px" height="300px" alt="">
     </div>
@@ -24,9 +25,10 @@
             v-model="description">
           </textarea>
         </div>
-        <input type="submit" name="" value="Create Profile">
+        <input type="submit" name="" value="Update Profile">
       </form>
     </div>
+    <h1>{{userProfileData}}</h1>
   </section>
 </template>
 
@@ -38,9 +40,7 @@
   import OccupationSelector from './helpers/OccupationSelector.vue'
   import IsSmokerSelector from './helpers/IsSmokerSelector.vue'
 
-  import { mapGetters } from 'vuex'
-
-  // import DateHandler from '../../utils/date'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
@@ -53,6 +53,9 @@
         userProfileData: 'userProfileData'
       })
     },
+    created: function () {
+      this.getProfileData()
+    },
     components: {
       appUsernameSelector: UsernameSelector,
       appPlaceSelector: PlaceSelector,
@@ -62,20 +65,34 @@
       appIsSmokerSelector: IsSmokerSelector
     },
     methods: {
-      createProfile () {
-        const profileData = {
-          first_name: this.userProfileData.name,
-          last_name: this.userProfileData.lastname,
-          age: this.userProfileData.dateOfBirth,
-          nationality: this.userProfileData.nationality,
-          occupation: this.userProfileData.occupation,
-          is_smoker: this.userProfileData.isSmoker,
-          description: this.description
-        }
+      ...mapActions({
+        setUserData: 'setUserNameAndLastname',
+        setDateOfBirth: 'setUserBirthday',
+        setUserCountry: 'setUserNationality',
+        setUserStatus: 'setIsUserSmoker',
+        setOccupation: 'setUserOccupation'
+      }),
+      getProfileData () {
+        const userId = this.$route.params.id
 
-        this.axios.post('profiles', profileData)
+        this.axios.get(`profiles/${userId}`)
         .then(response => {
-          console.log(response.data)
+          if (response.data.length === 0) {
+            console.log('Create a profile to get started')
+          } else {
+            this.profile = response.data[0]
+            const fullName = {
+              name: this.profile.first_name,
+              lastname: this.profile.last_name
+            }
+            this.setUserData(fullName)
+            this.setDateOfBirth(this.profile.age)
+            this.setUserCountry(this.profile.nationality)
+            this.setUserStatus(this.profile.is_smoker)
+            this.setOccupation(this.profile.occupation)
+            this.description = this.profile.description
+            console.log(response.data[0])
+          }
         })
         .catch(error => {
           console.log(error)
@@ -100,11 +117,6 @@
       min-height: 350px;
       min-width: 65vw;
       margin: 0 auto 3rem auto;
-      img {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-      }
     }
     .personal-info {
       form {

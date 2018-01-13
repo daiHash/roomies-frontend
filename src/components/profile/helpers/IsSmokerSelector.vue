@@ -1,5 +1,6 @@
 <template>
   <div class="smoker">
+    {{ setDefaultValue() }}
     <ul>
       <h3>Do you smoke?</h3>
       <li>
@@ -27,13 +28,18 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
         status: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        userProfileData: 'userProfileData'
+      })
     },
     methods: {
       ...mapActions({
@@ -46,6 +52,15 @@
         } else if (this.status === '2') {
           const status = true
           this.setUserStatus(status)
+        }
+      },
+      setDefaultValue () {
+        if (this.userProfileData) {
+          if (!this.userProfileData.isSmoker) {
+            this.status = '1'
+          } else {
+            this.status = '2'
+          }
         }
       }
     }

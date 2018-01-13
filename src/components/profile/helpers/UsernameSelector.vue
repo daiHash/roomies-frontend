@@ -1,5 +1,6 @@
 <template>
   <div class="username">
+    {{ setDefaultValue() }}
     <ul>
       <li>
         <label>First Name</label> <br>
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
@@ -22,6 +23,11 @@
         name: '',
         lastname: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        userProfileData: 'userProfileData'
+      })
     },
     methods: {
       ...mapActions({
@@ -33,6 +39,15 @@
           lastname: this.lastname
         }
         this.setUserData(payload)
+      },
+      setDefaultValue () {
+        if (this.userProfileData) {
+          this.name = this.userProfileData.name
+          this.lastname = this.userProfileData.lastname
+        } else {
+          this.name = ''
+          this.lastname = ''
+        }
       }
     }
   }

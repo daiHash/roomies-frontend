@@ -1,5 +1,6 @@
 <template>
   <div class="birthday">
+    {{ setDefaultValue() }}
     <ul>
       <li>
         <label>生年月日</label>
@@ -12,13 +13,18 @@
 
 <script>
   import DateHandler from '../../../utils/date'
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
       return {
         birthday: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        userProfileData: 'userProfileData'
+      })
     },
     methods: {
       ...mapActions({
@@ -39,6 +45,16 @@
           return true
         } else {
           return false
+        }
+      },
+      setDefaultValue () {
+        if (this.userProfileData) {
+          const parts = this.userProfileData.dateOfBirth.match(/(\d{4})(\d{2})(\d{2})/)
+          if (parts === null || parts === undefined) return
+          const date = `${parts[1]}-${parts[2]}-${parts[3]}`
+          this.birthday = date
+        } else {
+          this.birthday = ''
         }
       }
     }
