@@ -3,12 +3,12 @@
     <ul>
       <h3>Gender</h3>
       <li>
-        <input id="female" type="radio" name="gender" value="女" v-model="gender">
+        <input id="female" type="radio" name="gender" value="女" v-model="gender" required />
         <label for="female">女</label>
       </li>
 
       <li>
-        <input id="male" type="radio" name="gender" value="男" v-model="gender">
+        <input id="male" type="radio" name="gender" value="男" v-model="gender" required />
         <label for="male">男</label>
       </li>
     </ul>

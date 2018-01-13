@@ -11,7 +11,7 @@
           value="1"
           v-model="occupation"
           @change="sendUserOccupation"
-          :checked="userProfileData.occupation === '勉強'"/>
+          :checked="userProfileData.occupation === '勉強'" required/>
         <label for="study">勉強</label>
       </li>
       <li>
@@ -22,7 +22,7 @@
           value="2"
           v-model="occupation"
           @change="sendUserOccupation"
-          :checked="userProfileData.occupation === '仕事'"/>
+          :checked="userProfileData.occupation === '仕事'" required/>
         <label for="work">仕事</label>
       </li>
       <li>
@@ -33,7 +33,7 @@
           value="3"
           v-model="occupation"
           @change="sendUserOccupation"
-          :checked="userProfileData.occupation === '両方'"/>
+          :checked="userProfileData.occupation === '両方'" required/>
         <label for="both">両方</label>
       </li>
     </ul>

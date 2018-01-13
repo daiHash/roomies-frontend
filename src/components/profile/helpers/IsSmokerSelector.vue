@@ -10,7 +10,7 @@
           name="is-smoker"
           value="1"
           v-model="status"
-          @change="sendUserStatus"/>
+          @change="sendUserStatus" required/>
         <label for="not-smoker">タバコ吸いません</label>
       </li>
       <li>
@@ -20,7 +20,7 @@
           name="is-smoker"
           value="2"
           v-model="status"
-          @change="sendUserStatus"/>
+          @change="sendUserStatus" required/>
         <label for="smoker">タバコ吸います</label>
       </li>
     </ul>

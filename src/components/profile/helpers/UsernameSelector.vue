@@ -4,11 +4,11 @@
     <ul>
       <li>
         <label>First Name</label> <br>
-        <input type="text"  placeholder="First Name" v-model="name" @input="sendUserData">
+        <input type="text"  placeholder="First Name" v-model="name" @input="sendUserData" required>
       </li>
       <li>
         <label>Last Name</label> <br>
-        <input type="text"  placeholder="Last Name" v-model="lastname" @input="sendUserData">
+        <input type="text"  placeholder="Last Name" v-model="lastname" @input="sendUserData" required>
       </li>
     </ul>
   </div>

@@ -4,7 +4,7 @@
     <ul>
       <li>
         <label>生年月日</label>
-        <input type="date" v-model="birthday" @input="sendUserBirthday">
+        <input type="date" v-model="birthday" @input="sendUserBirthday" required />
       </li>
     </ul>
     <h2 v-if="isUnderage()" style="color:red;">You must be older than 18!</h2>

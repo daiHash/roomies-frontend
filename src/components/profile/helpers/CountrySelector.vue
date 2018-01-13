@@ -1,7 +1,7 @@
 <template>
   <div class="countries">
     {{ setDefaultValue() }}
-    <select name="country" id="country" @change="sendUserCountry" v-model="country">
+    <select name="country" id="country" @change="sendUserCountry" v-model="country" required>
       <option value="" label="Select a country … " selected="selected">Select a country …       </option>
       <optgroup id="country-optgroup-Africa" label="Africa">
         <option value="Algeria" label="Algeria" v-model="country" @input="sendUserCountry">Algeria</option>
