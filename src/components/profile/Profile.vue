@@ -22,7 +22,8 @@
         <h3 v-if="!profile.is_smoker">I Am Not a Smoker</h3>
         <h3 v-else>I Am a Smoker</h3>
       </div>
-      <input type="button" class="edit-btn" value="Edit">
+      <router-link :to="{ name: 'EditProfile', params: {id: userId} }" class="edit-btn">Edit</router-link>
+      <!-- <input type="button" class="edit-btn" value="Edit"> -->
     </div>
   </section>
 </template>
@@ -34,7 +35,8 @@
     data () {
       return {
         profile: [],
-        age: ''
+        age: '',
+        userId: ''
       }
     },
     created: function () {
@@ -42,9 +44,9 @@
     },
     methods: {
       getProfile () {
-        const userId = this.$route.params.id
+        this.userId = this.$route.params.id
 
-        this.axios.get(`profiles/${userId}`)
+        this.axios.get(`profiles/${this.userId}`)
         .then(response => {
           if (response.data.length === 0) {
             console.log('Create a profile to get started')
@@ -109,15 +111,15 @@
       .edit-btn {
         grid-column: 5 / span 4 ;
         grid-row: 12;
-        margin: 4rem 2rem 0 2rem;
+        margin: 4rem 2rem;
         font-size: 1.5rem;
         height: 3rem;
-        border-radius: 25px;
+        border-radius: 35px;
         cursor: pointer;
         background-color: #FD6C5C;
         color: #fff;
         border: none;
-        margin-bottom: 3rem;
+        padding-top: 1rem;
         transition: all .3s;
         &:hover, &:focus {
           background-color: #ee5a4a;
