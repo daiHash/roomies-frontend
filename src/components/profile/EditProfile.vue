@@ -6,7 +6,7 @@
     </div>
 
     <div class="personal-info">
-      <form class="" @submit.prevent="createProfile">
+      <form class="" @submit.prevent="updateProfile">
         <app-username-selector />
         <app-place-selector />
         <app-birthday-selector />
@@ -28,7 +28,6 @@
         <input type="submit" name="" value="Update Profile">
       </form>
     </div>
-    <h1>{{userProfileData}}</h1>
   </section>
 </template>
 
@@ -93,6 +92,27 @@
             this.description = this.profile.description
             console.log(response.data[0])
           }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      },
+      updateProfile () {
+        const newProfileData = {
+          first_name: this.userProfileData.name,
+          last_name: this.userProfileData.lastname,
+          age: this.userProfileData.dateOfBirth,
+          nationality: this.userProfileData.nationality,
+          occupation: this.userProfileData.occupation,
+          is_smoker: this.userProfileData.isSmoker,
+          description: this.description
+        }
+
+        const userId = this.$route.params.id
+        this.axios.put(`profiles/${userId}`, newProfileData)
+        .then(response => {
+          console.log(response.data.message)
+          this.$router.push({name: 'UserProfile'})
         })
         .catch(error => {
           console.log(error)

@@ -72,7 +72,6 @@
           is_smoker: this.userProfileData.isSmoker,
           description: this.description
         }
-
         this.axios.post('profiles', profileData)
         .then(response => {
           console.log(response.data)
@@ -96,6 +95,7 @@
     .profile-img {
       background-color: #fff;
       border: 1px solid #ccc;
+
       text-align: center;
       min-height: 350px;
       min-width: 65vw;
@@ -103,7 +103,6 @@
       img {
         width: 300px;
         height: 300px;
-        object-fit: cover;
       }
     }
     .personal-info {
