@@ -2,9 +2,6 @@
   <div>
     <div class="main-img">
     </div>
-
-    <router-link :to="{ name: 'CreateProfile'}">Create</router-link>
-    <router-link :to="{ name: 'UserProfile', params: {id: userId} }">Profile</router-link>
   </div>
 </template>
 
