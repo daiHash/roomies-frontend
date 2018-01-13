@@ -9,11 +9,14 @@ import router from './router'
 import store from './store/store'
 import Storage from './utils/storage/index'
 import vueSmoothScroll from 'vue-smooth-scroll'
-// import vueSelect from 'vue-select'
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
 
 Vue.config.productionTip = false
 
 Vue.use(vueSmoothScroll)
+
+Vue.component('icon', Icon)
 
 let networkClient = axios.create({
   baseURL: 'http://localhost:3000/v1/',
